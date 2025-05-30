@@ -12,7 +12,6 @@ const {
 router
     .route("/")
     .get(getAllContacts)
-    .post(createContact)
 
 router
     .route("/add")
