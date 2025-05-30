@@ -13,9 +13,6 @@ const port = 3000;
 
 dbConnect();
 
-app.use(express.json());
-app.use(express.urlencoded({ exended:true}))
-
 const requestTime = (req, res, next) => {
     let today = new Date();
     let now = today.toLocaleString();
@@ -25,14 +22,10 @@ const requestTime = (req, res, next) => {
 
 app.use(requestTime);
 
-app.get("/", (req, res) => {
-    const responseText = `Hello Node! \n요청 시간 : ${req.requestTime}`;
-    res.set("Content-type", "text/plain");
-    res.send(responseText);
-});
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+app.use("/", require("./routes/loginRoutes"))
 app.use("/contacts", require("./routes/contactRoutes"))
 app.use(errorhandler);
 
