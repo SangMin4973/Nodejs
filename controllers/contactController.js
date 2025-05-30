@@ -10,6 +10,10 @@ const addContactForm = (req,res) => {
     res.render("add");
 }
 
+const getLogin = (req,res) => {
+    res.render("home");
+}
+
 const createContact = asyncHandler(async(req, res) => {
     console.log(req.body);
     const { name, email, phone } = req.body;
@@ -52,5 +56,6 @@ module.exports = {
     getContact,
     updateContact,
     deleteContact,
-    addContactForm
+    addContactForm,
+    getLogin
 };
